@@ -24,6 +24,7 @@ class Team(models.Model):
     fb_link = models.URLField(default='#')
     insta_link = models.URLField(default='#')
     photo = models.ImageField(upload_to="media/team_images/%Y/%m/%d/")
+    youtube_link = models.URLField(default="#")
     created_date = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
