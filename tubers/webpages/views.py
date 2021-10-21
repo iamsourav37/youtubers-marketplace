@@ -4,11 +4,11 @@ from django.shortcuts import render
 
 
 def home(request):
-    pass
+    return render(request, "webpages/home.html")
 
 
 def about(request):
-    pass
+    return render(request, 'webpages/about.html')
 
 
 def services(request):
