@@ -14,3 +14,18 @@ class Slider(models.Model):
 
     def __str__(self) -> str:
         return self.headline
+
+
+
+class Team(models.Model):
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    role = models.CharField(max_length=200)
+    fb_link = models.URLField(default='#')
+    insta_link = models.URLField(default='#')
+    photo = models.ImageField(upload_to="media/team_images/%Y/%m/%d/")
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return self.first_name + self.last_name
+
