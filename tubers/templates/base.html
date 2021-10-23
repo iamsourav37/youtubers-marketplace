@@ -51,7 +51,7 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-      <a class="navbar-brand" href="/index.html">
+      <a class="navbar-brand" href="{% url 'webpages.home' %}">
         <img src="{% static './assets/images/logo.png' %}" alt="" width="140" height="30" alt="" loading="lazy">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -61,19 +61,19 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="/index.html">Home</a>
+            <a class="nav-link" href="{% url 'webpages.home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/aboutus.html">About</a>
+            <a class="nav-link" href="{% url 'webpages.about' %}">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/tubers.html">Tubers</a>
+            <a class="nav-link" href="{% url 'youtubers' %}">Tubers</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Services</a>
+            <a class="nav-link" href="{% url 'webpages.services' %}">Services</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/contactus.html">Contact</a>
+            <a class="nav-link" href="{% url 'webpages.contact' %}">Contact</a>
           </li>
 
         </ul>
