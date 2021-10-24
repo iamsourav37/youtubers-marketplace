@@ -13,8 +13,8 @@ class Youtuber(models.Model):
 
     CATEGORY_CHOICES = (
         ('teaching', 'Teaching'),
-        ('mobile review', 'Mobile |Review'),
-        ('technology', '|Technology'),
+        ('mobile review', 'Mobile Review'),
+        ('technology', 'Technology'),
         ('cooking', 'Cooking'),
         ('vlogs', 'Vlogs'),
         ('moto vlogging', 'Moto Vlogging'),

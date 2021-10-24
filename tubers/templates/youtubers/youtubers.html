@@ -58,39 +58,36 @@
               <p class="text-left font-weight-bolder text-black-50">
                 Search Tubers
               </p>
-              <form>
+              <form method="get" action="{% url 'search' %}">
                 <div class="form-group">
-                  <select id="inputState" class="form-control">
+                  <select id="inputState" class="form-control" name="city">
                     <option selected disabled hidden>City</option>
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                    <option>Value 4</option>
+                     {% for city in city_list %}
+                  <option>{{ city }}</option>
+              {% endfor %}
                   </select>
                 </div>
                 <div class="form-group">
-                  <select id="inputState" class="form-control">
+                  <select id="inputState" class="form-control" name="camera">
                     <option selected disabled hidden>Camera Type</option>
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                    <option>Value 4</option>
+                    {% for camera in camera_type %}
+                   <option>{{ camera }}</option>
+                  {% endfor %}
                   </select>
                 </div>
                 <div class="form-group">
-                  <select class="form-control">
+                  <select class="form-control" name="category">
                     <option selected disabled hidden>Category</option>
-                    <option>Value 1</option>
-                    <option>Value 2</option>
-                    <option>Value 3</option>
-                    <option>Value 4</option>
+                     {% for cate in category %}
+                  <option>{{ cate }}</option>
+              {% endfor %}
                   </select>
                 </div>
+              <button class="btn btn-accent btn-block">Search</button>
 
               </form>
 
 
-              <button class="btn btn-accent btn-block">Search</button>
             </div>
           </div>
         </div>
