@@ -1,5 +1,7 @@
  {% extends 'base.html' %}
  {% load static %}
+ {% load socialaccount %}
+ {% providers_media_js %}
 
  {% block content %}
       <main class="register container">
@@ -31,14 +33,12 @@
           <input type="password" class="form-control" placeholder="Confirm Password" name="password2">
         </div>
 
-        <button type="submit" class="btn btn-accent form-btn w-100 mt-3 mb-3">Signup</button>
+        <button  type="submit" class="btn btn-accent form-btn w-100 mt-3 mb-3">Signup</button>
         <div class="text-center">
           OR
         </div>
-
-        <button class="btn btn-primary form-btn w-100 mt-3">Facebook</button>
+         <a href="{% provider_login_url 'facebook' method='oauth2' %}" class="btn btn-primary form-btn w-100 mt-3">Facebook</a>
         <button class="btn btn-accent form-btn w-100 mt-3 mb-3">Google</button>
-
       </form>
     </div>
   </main>
