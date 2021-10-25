@@ -23,9 +23,10 @@ def about(request):
 
 
 def services(request):
-    pass
+    return render(request, 'webpages/services.html')
 
 
 def contact(request):
-    pass
+    return render(request, 'webpages/contact_us.html')
+
 
