@@ -14,11 +14,14 @@ def register(request):
         email = request.POST['email'].strip()
         password1 = request.POST['password1']
         password2 = request.POST['password2']
+        print(f"firstname: {firstname}")
 
-        if not firstname and lastname and username and email and password1:
+        if not (firstname and lastname and username and email and password1):
             messages.error(request, "**All the fields are required.")
             return redirect("register")
-        
+        if len(password1) < 4:
+            messages.error(request, "**Password must be 4 character long.")
+            return redirect("register")
         if password1 == password2:
             print("password is matched")
 
