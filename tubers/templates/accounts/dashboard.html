@@ -14,7 +14,7 @@
     <section class="container mt-5">
       <h2 class="text-center">Welcome to Dashboard</h2>
       <h4 class="text-center text-white-50">
-        hi, {{request.user.get_full_name}}. Hope you are having a good day
+        hi, {{request.user.first_name}}. Hope you are having a good day
       </h4>
 
       <div class="table-responsive- mt-3">
@@ -28,32 +28,18 @@
               <th scope="col">Visit</th>
             </tr>
           </thead>
+          {% for tuber in  tubers_to_hire %}
           <tbody>
             <tr>
               <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
+              <td>{{tuber.tuber_name}}</td>
+              <td>{{ tuber.city }}</td>
               <td>
-                <div class="btn btn-accent">Go to Page </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>
-                <div class="btn btn-accent">Go to Page </div>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>
-                <div class="btn btn-accent">Go to Page </div>
+                <div class="btn btn-accent"><a href="{% url 'youtuber_detail' tuber.tuber_id %}">Go to Page</a> </div>
               </td>
             </tr>
           </tbody>
+          {% endfor %}
         </table>
       </div>
 

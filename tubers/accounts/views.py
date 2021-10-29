@@ -4,6 +4,7 @@ from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from contacttuber.models import SocialLink
+from hiretubers.models import Hiretuber
 # Create your views here.
 
 
@@ -79,4 +80,6 @@ def dashboard(request):
     data = {
         "social_links": SocialLink.objects.first(),
     }
+    tubers_to_hire = Hiretuber.objects.filter(user_id=request.user.id)
+    data['tubers_to_hire'] = tubers_to_hire
     return render(request, "accounts/dashboard.html", data)
