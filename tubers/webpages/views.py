@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from .models import Slider, Team
 from youtubers.models import Youtuber
+from contacttuber.models import Contact
+from django.contrib import messages as d_message
 # Create your views here.
 
 
@@ -31,6 +33,20 @@ def services(request):
 
 
 def contact(request):
+    if request.method == 'POST':
+        full_name = request.POST['full_name']
+        phone = request.POST['phone']
+        email = request.POST['email']
+        company_name = request.POST['company_name']
+        subject = request.POST['subject']
+        message = request.POST['message']
+
+        # TODO: Data sanitization
+
+        contact = Contact(full_name=full_name, phone=phone, email=email, company_name=company_name, subject=subject, message=message)
+        contact.save()
+        d_message.success(request, "Thank you for reaching out !!!")
+
     return render(request, 'webpages/contact_us.html')
 
 
