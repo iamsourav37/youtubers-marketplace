@@ -105,7 +105,7 @@
 {% for tuber in tubers %}    
         <div class="card border-0 text-center">
           <div>
-          <a href="#">
+          <a href="{% url 'youtuber_detail' tuber.id %}">
             <img src="{{ tuber.photo.url }}" class="card-img-top" alt="team-member">
           </a>
 

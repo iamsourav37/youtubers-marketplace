@@ -18,7 +18,19 @@ class TeamAdmin(admin.ModelAdmin):
     search_fields = ['first_name', 'last_name', 'role', 'created_date']
     list_filter = ['role']
 
-admin.site.register(Slider)
+
+class SliderAdmin(admin.ModelAdmin):
+
+    def slider_image(self, object):
+        return format_html(f"<img src='{object.photo.url}' width='100' height='60' />")
+
+
+    list_display = ("headline", "subtitle", "slider_image")
+
+
+
+
+admin.site.register(Slider, SliderAdmin)
 admin.site.register(Team, TeamAdmin)
 
 
