@@ -38,8 +38,8 @@
     <div class="container">
       <div class="row ">
         <div class="col-md-6 header-info">
-          <a href="mailto:info@ytubers.com" class="mr-3">info@ytubers.com</a>
-          <span>Call at: +91 9898989898 </span>
+          <a href=" {{ social_links.email }}" class="mr-3"> {{ social_links.email }}</a>
+          <span>Call at: +91 {{ social_links.phone }} </span>
         </div>
         <div class="header-buttons col-md-6 d-flex justify-content-end">
         {% if user.is_authenticated %}
@@ -128,10 +128,10 @@
         <div class="col-md-4 text-lg-right text-center">
           <div>
 
-            <button class="btn btn-accent"> <i class="fab fa-facebook-f fa-lg	"></i> </button>
-            <button class="btn btn-accent"> <i class="fab fa-instagram fa-lg	"></i> </button>
-            <button class="btn btn-accent"> <i class="fab fa-twitter fa-lg	"></i> </button>
-            <button class="btn btn-accent"> <i class="fab fa-youtube fa-lg	"></i> </button>
+            <button class="btn btn-accent"> <a href=" {{ social_links.fb_link }}"><i class="fab fa-facebook-f fa-lg	">  </i> </a></button>
+            <button class="btn btn-accent"><a href=" {{ social_links.insta_link }}"> <i class="fab fa-instagram fa-lg	"></i> </a></button>
+            <button class="btn btn-accent"><a href=" {{ social_links.twitter_link }}"> <i class="fab fa-twitter fa-lg	"> </a></i> </button>
+            <button class="btn btn-accent"><a href=" {{ social_links.youtube_link }}"> <i class="fab fa-youtube fa-lg	"></i> </a> </button>
 
           </div>
         </div>

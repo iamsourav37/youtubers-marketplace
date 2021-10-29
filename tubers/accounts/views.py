@@ -3,10 +3,14 @@ from django.contrib.auth import logout
 from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from contacttuber.models import SocialLink
 # Create your views here.
 
 
 def register(request):
+    data = {
+        "social_links": SocialLink.objects.first(),
+    }
     if request.method == 'POST':
         firstname = request.POST['firstname'].strip()
         lastname = request.POST['lastname'].strip()
@@ -44,10 +48,13 @@ def register(request):
 
         
 
-    return render(request, "accounts/register.html")
+    return render(request, "accounts/register.html", data)
 
 
 def login(request):
+    data = {
+        "social_links": SocialLink.objects.first(),
+    }
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -60,7 +67,7 @@ def login(request):
         else:
             messages.error(request, "** Invalid credentials")
             return redirect("login")
-    return render(request, "accounts/login.html")
+    return render(request, "accounts/login.html", data)
 
 
 def logout_user(request):
@@ -69,4 +76,7 @@ def logout_user(request):
 
 @login_required(login_url="login")
 def dashboard(request):
-    return render(request, "accounts/dashboard.html")
+    data = {
+        "social_links": SocialLink.objects.first(),
+    }
+    return render(request, "accounts/dashboard.html", data)

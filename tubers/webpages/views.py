@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from .models import Slider, Team
 from youtubers.models import Youtuber
-from contacttuber.models import Contact
+from contacttuber.models import Contact, SocialLink
 from django.contrib import messages as d_message
 # Create your views here.
+
 
 
 def home(request):
@@ -16,6 +17,7 @@ def home(request):
         "teams": teams,
         "features": featured_ytubers,
         "tubers": all_tubers,
+        "social_links": SocialLink.objects.first(),
     }
     return render(request, "webpages/home.html", data)
 
@@ -24,15 +26,23 @@ def about(request):
     teams = Team.objects.all()
     data = {
         "teams": teams,
+        "social_links": SocialLink.objects.first(),
+
     }
     return render(request, 'webpages/about_us.html', data)
 
 
 def services(request):
-    return render(request, 'webpages/services.html')
+    data = {
+        "social_links": SocialLink.objects.first(),
+    }
+    return render(request, 'webpages/services.html', data)
 
 
 def contact(request):
+    data = {
+        "social_links": SocialLink.objects.first(),
+    }
     if request.method == 'POST':
         full_name = request.POST['full_name']
         phone = request.POST['phone']
@@ -47,6 +57,6 @@ def contact(request):
         contact.save()
         d_message.success(request, "Thank you for reaching out !!!")
 
-    return render(request, 'webpages/contact_us.html')
+    return render(request, 'webpages/contact_us.html', data)
 
 

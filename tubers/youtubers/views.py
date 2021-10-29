@@ -1,6 +1,7 @@
 from django.http.request import QueryDict
 from django.shortcuts import get_object_or_404, render
 from .models import Youtuber
+from contacttuber.models import SocialLink
 
 
 # Create your views here.
@@ -10,6 +11,7 @@ def youtubers(request):
     tubers = Youtuber.objects.order_by("-created_date")
     data = {
         "tubers": tubers,
+        "social_links": SocialLink.objects.first(),
     }
 
     city_list = Youtuber.objects.values_list("city", flat=True).distinct()
@@ -27,6 +29,7 @@ def youtuber_detail(request, id):
     tuber = get_object_or_404(Youtuber, pk=id)
     data = {
         'tuber': tuber,
+        "social_links": SocialLink.objects.first(),
     }
     return render(request, "youtubers/youtuber_detail.html", data)
 
@@ -34,7 +37,9 @@ def youtuber_detail(request, id):
 
 def search(request):
     tubers = set()
-    data = {}
+    data = {
+        "social_links": SocialLink.objects.first(),
+    }
     city_list = Youtuber.objects.values_list("city", flat=True).distinct()
     camera_type_list = Youtuber.objects.values_list("camera_type", flat=True).distinct()
     category_list = Youtuber.objects.values_list("category", flat=True).distinct()
